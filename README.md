@@ -7,18 +7,31 @@
 ### jsonp跨域请求
 
 import jsonp from '@/common/js/jsonp.js'
+
 export function getList() {
+
   const url = 'http://***/api/list'
-  const data = Object.assign({}, commonParams, { 
-    platform: 'h5', 
+  
+  const data = Object.assign({}, commonParams, {
+   
+    platform: 'h5',
+    
     limit:10,
+
     page:1,
+    
     format: 'jsonp'
+  
   })
-  const options = {	
+
+  const options = {
+  	
   	param: 'jsonpCallback'
+  
   }
+  
   return jsonp(url, data, options)
+
 }
 
 #####jsonp.js的代码
