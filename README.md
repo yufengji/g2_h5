@@ -53,25 +53,25 @@ import axios from 'axios'
 
 export function getBanner(type,limit){
   
-  const url = 'api/getBanner'
+	const url = 'api/getBanner'
   
-  const data = Object.assign({
+	const data = Object.assign({
     
-    type:type,
+		type:type,
     
-    limit:limit
+    	limit:limit
   
-  })
+  	})
   
-  return axios.get(url,{
+  	return axios.get(url,{
     
-    params:data
+    	params:data
   
-  }).then((res) => {
+  	}).then((res) => {
     
-    return Promise.resolve(res.data)
+    	return Promise.resolve(res.data)
   
-  })
+  	})
 
 }
 
