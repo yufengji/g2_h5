@@ -6,8 +6,8 @@
 vue2.0+vuex+axios+router(vue全家桶)+es2015(es6)
 
 # 项目运行：
-npm install
-npm run dev
++ npm install
++ npm run dev
 
 # 项目目录：
 ![](https://github.com/yufengji/g2_h5/blob/master/project-pic/ml.jpg?raw=true)
