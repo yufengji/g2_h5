@@ -26,25 +26,25 @@ app.use('/api',apiRoutes)
 
 devServer:{
 
-	before(app){
+    before(app){
 		
-		app.get('/api/getBanner',(req,res) => {
+	    app.get('/api/getBanner',(req,res) => {
         
-    		var url = 'http://***/api/IndexAction/banner'
+    	    var url = 'http://***/api/IndexAction/banner'
         
-    		axios.get(url,params: req.query}).then((response) => {
+    	    axios.get(url,params: req.query}).then((response) => {
           
-        		res.json(response.data)
+        	    res.json(response.data)
         
-    		}).catch((e) => {
+    	    }).catch((e) => {
           
-        		console.log(e)
+        	    console.log(e)
         
-    		})
+    	    })
       
-    	})
+        })
 	
-	}
+    }
 }
 
 api目录下的banner.js
