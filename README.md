@@ -4,6 +4,13 @@
 
 开发过程中的跨域问题通过jsonp进行解决
 
+### 项目运行：
++ npm install
++ npm run dev
+
+### 技术栈：
+vue2.0+vuex+axios+router(vue全家桶)+es2015(es6)
+
 ### jsonp跨域请求
 
 import jsonp from '@/common/js/jsonp.js'
@@ -77,16 +84,6 @@ function param(data) {
   return url ? url.substring(1) : ''
 
 }
-
-
-
-
-### 技术栈：
-vue2.0+vuex+axios+router(vue全家桶)+es2015(es6)
-
-### 项目运行：
-+ npm install
-+ npm run dev
 
 ### 项目目录：
 ![](https://github.com/yufengji/g2_h5/blob/master/project-pic/ml.jpg?raw=true)
