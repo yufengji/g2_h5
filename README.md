@@ -5,7 +5,7 @@
 ### 技术栈：
 vue2.0+vuex+axios+router(vue全家桶)+es2015(es6)
 
-# 项目运行：
+### 项目运行：
 + npm install
 + npm run dev
 
