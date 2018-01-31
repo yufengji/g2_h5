@@ -2,7 +2,7 @@
 
 注：该项目在本地开发时通过抓取线上的API接口进行开发
 
-开发过程中的跨域问题通过jsonp进行解决
+开发过程中线上api通过代理进行数据请求
 
 ### 项目运行：
 + npm install
@@ -11,77 +11,67 @@
 ### 技术栈：
 vue2.0+vuex+axios+router(vue全家桶)+es2015(es6)
 
-### jsonp跨域请求
+### 代理设置
+webpack.dev.conf.js里面添加
 
-import jsonp from '@/common/js/jsonp.js'
+const axios = require('axios')
 
-export function getList() {
+const express = require('express')
 
-  const url = 'http://***/api/list'
-  
-  const data = Object.assign({}, commonParams, {
-   
-    platform: 'h5',
-    
-    limit:10,
+const app = express()
 
-    page:1,
-    
-    format: 'jsonp'
-  
-  })
+var apiRoutes = express.Router()
 
-  const options = {
-  	
-  	param: 'jsonpCallback'
-  
-  }
-  
-  return jsonp(url, data, options)
+app.use('/api',apiRoutes)
 
+devServer:{
+
+	before(app){
+		
+		app.get('/api/getBanner',(req,res) => {
+        
+        var url = 'http://***/api/IndexAction/banner'
+        
+        axios.get(url,params: req.query}).then((response) => {
+          
+          res.json(response.data)
+        
+        }).catch((e) => {
+          
+          console.log(e)
+        
+        })
+      
+      })
+	
+	}
 }
 
-#### jsonp.js的代码
+api目录下的banner.js
 
-import originJSONP from 'jsonp'
+import axios from 'axios'
 
-export default function jsonp(url, data, option) {
+export function getBanner(type,limit){
   
-  url += (url.indexOf('?') < 0 ? '?' : '&') + param(data)
+  const url = 'api/getBanner'
   
-  return new Promise((resolve, reject) => {
+  const data = Object.assign({
     
-    originJSONP(url,option, (err, data) => {
-      
-      if(!err) {
-        
-        resolve(data)
-      
-      }else {
-        
-        reject(err)
-      
-      }
+    type:type,
     
-    })
+    limit:limit
   
   })
-
-}
-
-function param(data) {
   
-  let url
-  
-  for(var k in data) {
+  return axios.get(url,{
     
-    let value = data[k] !== undefined ? data[k] : ''
+    params:data
+  
+  }).then((res) => {
     
-    url += `&${k}=${encodeURIComponent(value)}`
+    return Promise.resolve(res.data)
   
-  }
-  
-  return url ? url.substring(1) : ''
+  })
 
 }
 
