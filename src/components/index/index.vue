@@ -147,8 +147,8 @@
         banner:[],
         limit: 5,
         latestlimit:null,
-        boutique:'boutique',
-        explode:'explode',
+        boutique:2,
+        explode:3,
         latest:'latest',
         boutiquedata: [],
         explodedata:[],
@@ -184,14 +184,14 @@
       _getBoutique() {
         recomGame(this.limit, this.boutique).then((res) => {
           if(res.status == ERR_OK) {
-            this.boutiquedata = this._normallizeBoutique(res.data)
+            this.boutiquedata = this._normallizeBoutique(res.data.game)
           }
         })
       },
       _getExplode() {
         recomGame(this.limit, this.explode).then((res) => {
           if(res.status == ERR_OK) {
-            this.explodedata = this._normallizeBoutique(res.data)
+            this.explodedata = this._normallizeBoutique(res.data.game)
           }
         })
       },
